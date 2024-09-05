@@ -1,6 +1,9 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar/Navbar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import Movies from "./pages/Movies/Movies";
+import Details from "./pages/Details/Details";
 
 function App() {
   return (
@@ -8,12 +11,9 @@ function App() {
       <Navbar />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<h1>Home Page</h1>} />
-          <Route path="/movies" element={<h1>Movies Page</h1>} />
-          <Route
-            path="/moviedetails/:id"
-            element={<h1>Home Details Page</h1>}
-          />
+          <Route path="/" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/moviedetails/:id" element={<Details />} />
         </Routes>
       </BrowserRouter>
     </div>
