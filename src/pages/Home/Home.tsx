@@ -1,5 +1,11 @@
+import HomeSlider from "../../components/Home/HomeSlider";
+
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <div>
+      <HomeSlider />
+    </div>
+  );
 };
 
 export default Home;
