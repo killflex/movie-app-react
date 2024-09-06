@@ -1,37 +1,15 @@
-import { useEffect, useState } from "react";
 import { FiThumbsUp } from "react-icons/fi";
 import { imagePath } from "../../utils/constant";
+import { CarouselMovie } from "../../utils/constant";
 import Carousel from "react-bootstrap/Carousel";
-import baseApi from "../../api/axiosInstance";
 
-const HomeCarousel = () => {
-  interface CarouselMovies {
-    backdrop_path: string;
-    poster_path: string;
-    overview: string;
-    title: string;
-    vote_count: number;
-  }
+interface HomeCarouselProps {
+  carouselMovies: CarouselMovie[];
+}
 
-  const [carouselMovies, setCarouselMovies] = useState<CarouselMovies[]>([]);
-
-  const fetchUpComing = async () => {
-    try {
-      const response = await baseApi.get(
-        "/3/movie/popular?language=en-US&page=1"
-      );
-      setCarouselMovies(response.data.results);
-    } catch (error) {
-      console.log("fetch upcoming movies error:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchUpComing();
-  }, []);
-
+const HomeCarousel = ({ carouselMovies }: HomeCarouselProps) => {
   return (
-    <div className="relative w-[900px]">
+    <>
       <Carousel indicators={false}>
         {carouselMovies.map((movie, index) => (
           <Carousel.Item key={index}>
@@ -66,8 +44,9 @@ const HomeCarousel = () => {
             </div>
           </Carousel.Item>
         ))}
+        ;
       </Carousel>
-    </div>
+    </>
   );
 };
 
