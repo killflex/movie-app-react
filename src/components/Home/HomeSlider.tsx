@@ -23,8 +23,11 @@ const HomeSlider = () => {
   }, []);
 
   return (
-    <div className="relative w-[900px]">
-      <HomeCarousel carouselMovies={carouselMovies} />
+    <div className="row px-10">
+      <div className="col-8">
+        <HomeCarousel carouselMovies={carouselMovies} />
+      </div>
+      <div className="col-4 bg-red-300"></div>
     </div>
   );
 };
