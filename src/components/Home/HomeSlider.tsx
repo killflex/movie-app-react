@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { CarouselMovie } from "../../utils/constant";
-import Carousel from "react-bootstrap/Carousel";
 import baseApi from "../../api/axiosInstance";
 import HomeCarousel from "./HomeCarousel";
+import HomeCarouselList from "./HomeCarouselList";
 
 const HomeSlider = () => {
   const [carouselMovies, setCarouselMovies] = useState<CarouselMovie[]>([]);
+  const [next, setNext] = useState<number[]>([]);
+  const [selected, setSelected] = useState(0);
 
   const fetchUpComing = async () => {
     try {
@@ -27,7 +29,9 @@ const HomeSlider = () => {
       <div className="col-8">
         <HomeCarousel carouselMovies={carouselMovies} />
       </div>
-      <div className="col-4 bg-red-300"></div>
+      <div className="col-4">
+        <HomeCarouselList next={next} carouselMovies={carouselMovies} />
+      </div>
     </div>
   );
 };
